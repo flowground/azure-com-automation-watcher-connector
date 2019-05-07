@@ -1,0 +1,144 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "watcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "The core properties of ARM resources",
+                            "properties": {
+                                "id": {
+                                    "description": "Fully qualified resource Id for the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the resource",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "The type of the resource.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-ms-azure-resource": true
+                        }
+                    ],
+                    "description": "The resource model definition for a ARM tracked top level resource",
+                    "properties": {
+                        "location": {
+                            "description": "The Azure Region where the resource lives",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "read",
+                                "create"
+                            ]
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags.",
+                            "type": "object",
+                            "x-ms-mutability": [
+                                "read",
+                                "create",
+                                "update"
+                            ]
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Definition of the watcher type.",
+            "properties": {
+                "etag": {
+                    "description": "Gets or sets the etag of the resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the watcher properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "creationTime": {
+                            "description": "Gets or sets the creation time.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string",
+                            "nullable": false
+                        },
+                        "description": {
+                            "description": "Gets or sets the description.",
+                            "type": "string"
+                        },
+                        "executionFrequencyInSeconds": {
+                            "description": "Gets or sets the frequency at which the watcher is invoked.",
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "lastModifiedBy": {
+                            "description": "Details of the user who last modified the watcher.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "lastModifiedTime": {
+                            "description": "Gets or sets the last modified time.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string",
+                            "nullable": false
+                        },
+                        "scriptName": {
+                            "description": "Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook.",
+                            "type": "string"
+                        },
+                        "scriptParameters": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Gets or sets the parameters of the script.",
+                            "type": "object"
+                        },
+                        "scriptRunOn": {
+                            "description": "Gets or sets the name of the hybrid worker group the watcher will run on.",
+                            "type": "string"
+                        },
+                        "status": {
+                            "description": "Gets the current status of the watcher.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

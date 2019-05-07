@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "watcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "name": {
+                    "description": "Gets or sets the name of the resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the watcher update properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "executionFrequencyInSeconds": {
+                            "description": "Gets or sets the frequency at which the watcher is invoked.",
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
